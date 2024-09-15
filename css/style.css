@@ -1,1 +1,168 @@
 @import url("variables.css");
+
+
+/*ESTILOS GENERALES*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none; /*Eliminamos estilo de lista*/
+}
+
+a {
+    text-decoration: none; /*eliminamos el subrayado del enlace*/
+}
+
+.container {
+    max-width: 1120px;  /* Definimos un ancho máximo del container */
+    margin-inline: 1.5rem; /* Márgenes laterales */
+}
+
+.grid {
+    display: grid; /* Utiliza el diseño de cuadrícula */
+    gap: 1.5rem;  /* Espacio entre elementos de la cuadrícula */
+}
+
+
+.section {
+    padding-block: 5rem 2rem;  /* Espacio de la parte superior e inferior de las seccionsn */
+}
+
+
+/*ESTILOS DEL NAV*/
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: #948e8e; /*pendiente por definir*/
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.nav__abrir,
+.nav__cerrar {
+    display: flex;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .nav__menu {
+      position: fixed;
+      top: 0;
+      right: -100%; /*ocultamos el menu afuera de la pantalla*/
+      background-color: hsla(0, 0%, 10%, .3);
+      width: 75%;
+      height: 100%;
+      padding: 4.5rem 0 0 3rem;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: right .4s;
+    }
+  }
+  
+  .nav__list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+  }
+  
+  .nav__link {
+    position: relative;
+    color: #000;
+    transition: color .4s;
+  }
+  
+  
+  .nav__link:hover {
+    color: #000; /*pendiente por definir*/
+  }
+  
+
+  .nav__cerrar {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+  
+  
+  .show-menu {
+    right: 0;
+  }
+  
+  .phone-menu {
+    background-color: transparent;
+  }
+  
+  .phone-menu::after {
+    content: "";
+    position: absolute;
+    width: 1000%;
+    height: 100%;
+    background-color: hsla(0, 0%, 10%, .3);
+    backdrop-filter: blur(24px); /*Desenfoque del fondo*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  /*Activar link*/
+  .active-link {
+    color: #000;
+  }
+
+  @media screen and (max-width: 320px) {
+    .container {
+      margin-inline: 1rem;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .nav__menu {
+      width: 55%;
+    }
+  }  
+
+
+  @media screen and (min-width: 1023px) {
+    .section {
+        padding-block: 7rem 2rem;
+      }
+
+    .nav__cerrar, 
+    .nav__abrir {
+      display: none; /*Oculta los botones en pantallas grandes*/
+    }
+
+
+    .nav__list {
+        flex-direction: row;
+        column-gap: 3rem;
+      }
+      .nav__menu {
+        width: initial;
+      }
+    
+      .phone-menu::after {
+        backdrop-filter: blur(25px); /*desenfoca el menu*/
+      }
+}
+  
+@media screen and (min-width: 1152px) {
+    .container {
+      margin-inline: auto; /*Centra todo en pantallas muy grandes*/
+    }
+
+}
