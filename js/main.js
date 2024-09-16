@@ -32,3 +32,26 @@ const blurHeader = () =>{
 }
 
 window.addEventListener('scroll', blurHeader)
+
+    const images = [
+        'storage/img/s1.jpg',  
+        'storage/img/s2.jpg',  
+        'storage/img/s3.jpg',
+        'storage/img/s3.jpg'   
+    ];
+
+    let currentIndex = 0;
+    const imgElement = document.getElementById('home-image');
+
+    function updateImage(index) {
+        // Actualiza la imagen a la de la posición especificada
+        imgElement.src = images[index];
+    }
+
+    function changeImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        imgElement.src = images[currentIndex];
+    }
+
+    // Cambia la imagen automáticamente cada 5 segundos (5000 milisegundos)
+    setInterval(changeImage, 2000);
