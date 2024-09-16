@@ -13,6 +13,27 @@ ul {
     /*Eliminamos estilo de lista*/
 }
 
+button,
+body{
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+h1, h2, h3 {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+
 a {
     text-decoration: none;
     /*eliminamos el subrayado del enlace*/
@@ -48,25 +69,51 @@ img {
     height: auto;
 }
 
+.section__title, 
+.section__subtitle {
+  text-align: center;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.section__title {
+    font-size: var(--h1-font-size);
+    margin-bottom: 1.5rem;
+  }
+
+.section__subtitle {
+    font-size: var(--small-font-size);
+    margin-bottom: .25rem;
+  }
+  
+.section__subtitle span {
+    color: var(--first-color);
+  }
+
 
 
 /*ESTILOS DEL NAV*/
-.header {
+.header{
     position: fixed;
     width: 100%;
-    background-color: #948e8e;
-    /*pendiente por definir*/
+    background-color: var(--container-color);
     top: 0;
     left: 0;
     z-index: 100;
 }
 
 .nav {
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.nav__logo {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+  
 
 .nav__abrir,
 .nav__cerrar {
@@ -84,6 +131,26 @@ img {
     height: 100vh;
 }
 
+.home__container {
+    padding-top: 2rem;
+    row-gap: 2.5rem;
+}
+
+.home__data {
+    text-align: center;
+}
+
+.home__title {
+    color: var(--first-color);
+    font-size: var(--biggest-font-size);
+    font-weight: var(--font-semi-bold);
+}
+
+.home__description{
+    margin-block: 1rem 1.5rem;
+    font-size: var(--bigger-font-size);
+  }
+  
 .home__img,
 .home__shadow{
     position: absolute;
@@ -105,11 +172,6 @@ img {
     z-index: -1;
 }
 
-.home__data{
-    text-align: center;
-    color: rgb(243, 253, 252);/*Pendiente cambiar color*/
-
-}
 
 .home__button{
     display: flex;
@@ -120,11 +182,11 @@ img {
 .button{
     display: flex;
     justify-content: center;
-    background-color: #948e8e; /*Pendiente escoger otro color*/
+    background-color: var(--first-color-alt); /*Pendiente escoger otro color*/
     padding: 1rem 1.75rem;
     border-radius: .5rem;
-    color: white;
-    /*font-weight: ;*/
+    color: var(--title-color);
+    font-weight: var(--font-medium) ;
     transition: box-shadow .4s;
 }
 
@@ -135,7 +197,7 @@ img {
 /*Seccion gallery*/
 
 .gallery{
-    background-color: antiquewhite;
+    background-color: var(--container-color);
 }
 
 .art__container{
@@ -206,19 +268,20 @@ img {
 
 .visit__card{
     text-align: center;
-    background-color: #948e8e;/*pendiente modificar*/
+   
     padding: 3rem 1.25rem;
     border-radius: 1rem;
-    border: 2px solid #000;
+
     transition: border .4s;
 }
 
 .visit__title{
+    font-size: var(--h2-font-size);
     margin-bottom: 1.5rem;
 }
 
 .visit__card:hover {
-    border: 2px solid #c24b4b;
+    border: 2px solid var(--first-color)
   }
 
 .visit__icon {
@@ -258,8 +321,7 @@ img {
     .nav__menu {
         position: fixed;
         top: 0;
-        right: -100%;
-        /*ocultamos el menu afuera de la pantalla*/
+        right: -100%; /*ocultamos el menu afuera de la pantalla*/
         background-color: hsla(0, 0%, 10%, .3);
         width: 75%;
         height: 100%;
@@ -279,16 +341,27 @@ img {
 
 .nav__link {
     position: relative;
-    color: #000;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
     transition: color .4s;
 }
 
+.nav__link::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: var(--first-color);
+    position: absolute;
+    left: 0;
+    bottom: -.5rem;
+    transition: width .3s;
+  }
+
 
 .nav__link:hover {
-    color: #000;
-    /*pendiente por definir*/
-}
+    color: var(--first-color);
 
+}
 
 .nav__cerrar {
     position: absolute;
@@ -319,7 +392,7 @@ img {
 
 /*Activar link*/
 .active-link {
-    color: #000;
+    color: var(--first-color);
 }
 
 @media screen and (max-width: 320px) {
@@ -330,6 +403,12 @@ img {
     .visit__container{
         padding-block: 1.5rem;
     }
+
+    .art__card{
+        padding-block: 1.5rem;
+    }
+
+  
 }
 
 @media screen and (min-width: 576px) {
@@ -350,6 +429,7 @@ img {
         grid-template-columns: 100%;
         align-items: center;
     }
+
     .art__container,
     .visit__container{
         grid-template-columns: repeat(2, 352px);
@@ -363,7 +443,7 @@ img {
     }
 
     .nav {
-        height: calc(var(--header-height) + 1.5rem);
+        height: 30% calc(var(--header-height) + 1.5rem);
     }
 
     .nav__cerrar,
