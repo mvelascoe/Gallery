@@ -144,16 +144,59 @@ img {
     padding-block: 1rem;
 }
 
-.art__card{
+.art__card {
     position: relative;
+    width: 250px;  /* Ajusta el tamaño de las tarjetas */
+    height: 350px;
     border-radius: 1rem;
     overflow: hidden;
+    perspective: 1000px; /* Agrega un efecto de profundidad */
+    margin: 1rem;
 }
 
-.art__img{
+.art__inner {
+    position: relative;
     width: 100%;
     height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
+
+.art__card:hover .art__inner {
+    transform: rotateY(180deg); /* Gira la tarjeta 180 grados */
+}
+
+.art__front, .art__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta el reverso mientras rota */
+    top: 0;
+    left: 0;
+}
+
+.art__front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.art__back {
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg); /* La parte trasera está volteada inicialmente */
+}
+
+.art__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
 
 /*SECCION VISIT*/
 .visit__container{
@@ -178,6 +221,12 @@ img {
     border: 2px solid #c24b4b;
   }
 
+.visit__icon {
+    display: block;
+    font-size: 4rem;
+    color: var(--first-color);
+    margin-bottom: .75rem;
+}
 
 /*FOOTER*/
 .footer {
